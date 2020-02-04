@@ -1,6 +1,4 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -23,24 +21,18 @@ public class FailedLoginTests {
 
     @Test
     public void asUserTryToLogInWithIncorrectLoginAndPassword() {
-        WebElement enterStoreLink = driver.findElement(By.xpath("//a[.='Enter the Store']"));
-        enterStoreLink.click();
+        LandingPage landingPage = new LandingPage(driver);
+        landingPage.clickOnEnterStoreLink();
 
-        WebElement signOnLink = driver.findElement(By.xpath("//a[.='Sign In']"));
-        signOnLink.click();
+        TopMenuPage topMenuPage = new TopMenuPage(driver);
+        topMenuPage.clickOnSignInLink();
 
-        WebElement usernameFiled = driver.findElement(By.name("username"));
-        usernameFiled.sendKeys("wrongName");
-
-        WebElement passwordField = driver.findElement(By.name("password"));
-        passwordField.sendKeys("wrongPasswd");
-
-        WebElement signOnButton = driver.findElement(By.name("signon"));
-        signOnButton.click();
-
-        WebElement messageLabel = driver.findElement(By.xpath("//ul[@class='messages']/li"));
-
-        assertEquals(messageLabel.getText(), "Invalid username or password. Signon failed.");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.typeIntoUserNameField("wrongName");
+        loginPage.typeIntoPasswordField("wrongPasswd");
+        loginPage.clickOnLoginButton();
+        String warningMessage = loginPage.getWarningMessage();
+        assertEquals(warningMessage, "Invalid username or password. Signon failed.");
     }
 
     @AfterMethod

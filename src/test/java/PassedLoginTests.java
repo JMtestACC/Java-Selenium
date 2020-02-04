@@ -24,26 +24,19 @@ public class PassedLoginTests {
 
     @Test
     public void asUserLoginUsingValidLoginAndPassword() {
+        LandingPage landingPage = new LandingPage(driver);
+        landingPage.clickOnEnterStoreLink();
 
-        WebElement enterStoreLink = driver.findElement(By.cssSelector("#Content a"));
-        enterStoreLink.click();
+        TopMenuPage topMenuPage = new TopMenuPage(driver);
+        topMenuPage.clickOnSignInLink();
 
-        WebElement signOnLink = driver.findElement(By.cssSelector("#MenuContent a[href*='signonForm']"));
-        signOnLink.click();
-
-        WebElement usernameField = driver.findElement(By.name("username"));
-        usernameField.clear();
-        usernameField.sendKeys("j2ee");
-
-        WebElement passwordField = driver.findElement(By.name("password"));
-        passwordField.clear();
-        passwordField.sendKeys("j2ee");
-
-        WebElement signOnButton = driver.findElement(By.name("signon"));
-        signOnButton.click();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.typeIntoUserNameField("j2ee");
+        loginPage.clearPasswordField();
+        loginPage.typeIntoPasswordField("j2ee");
+        loginPage.clickOnLoginButton();
 
         WebElement bannerAfterLoginLogo = driver.findElement(By.cssSelector("#Banner img[src*='dog']"));
-
         assertTrue(bannerAfterLoginLogo.isDisplayed());
     }
 
