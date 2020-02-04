@@ -1,6 +1,7 @@
 #Directories
 .idea
 target
+backups/
 
 #Files
 janas.selenium.iml
