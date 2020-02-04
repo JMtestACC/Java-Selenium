@@ -7,9 +7,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
-import static org.testng.Assert.assertEquals;
 
-public class FailedLoginTests {
+import static org.testng.Assert.assertTrue;
+
+public class PassedLoginTests {
 
     private WebDriver driver;
 
@@ -22,25 +23,28 @@ public class FailedLoginTests {
     }
 
     @Test
-    public void asUserTryToLogInWithIncorrectLoginAndPassword() {
-        WebElement enterStoreLink = driver.findElement(By.xpath("//a[.='Enter the Store']"));
+    public void asUserLoginUsingValidLoginAndPassword() {
+
+        WebElement enterStoreLink = driver.findElement(By.cssSelector("#Content a"));
         enterStoreLink.click();
 
-        WebElement signOnLink = driver.findElement(By.xpath("//a[.='Sign In']"));
+        WebElement signOnLink = driver.findElement(By.cssSelector("#MenuContent a[href*='signonForm']"));
         signOnLink.click();
 
-        WebElement usernameFiled = driver.findElement(By.name("username"));
-        usernameFiled.sendKeys("wrongName");
+        WebElement usernameField = driver.findElement(By.name("username"));
+        usernameField.clear();
+        usernameField.sendKeys("j2ee");
 
         WebElement passwordField = driver.findElement(By.name("password"));
-        passwordField.sendKeys("wrongPasswd");
+        passwordField.clear();
+        passwordField.sendKeys("j2ee");
 
         WebElement signOnButton = driver.findElement(By.name("signon"));
         signOnButton.click();
 
-        WebElement messageLabel = driver.findElement(By.xpath("//ul[@class='messages']/li"));
+        WebElement bannerAfterLoginLogo = driver.findElement(By.cssSelector("#Banner img[src*='dog']"));
 
-        assertEquals(messageLabel.getText(), "Invalid username or password. Signon failed.");
+        assertTrue(bannerAfterLoginLogo.isDisplayed());
     }
 
     @AfterMethod
@@ -50,3 +54,4 @@ public class FailedLoginTests {
     }
 
 }
+
