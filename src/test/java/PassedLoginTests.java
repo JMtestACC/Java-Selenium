@@ -32,7 +32,6 @@ public class PassedLoginTests {
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.typeIntoUserNameField("j2ee");
-        loginPage.clearPasswordField();
         loginPage.typeIntoPasswordField("j2ee");
         loginPage.clickOnLoginButton();
 
