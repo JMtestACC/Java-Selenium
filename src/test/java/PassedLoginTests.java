@@ -35,8 +35,8 @@ public class PassedLoginTests {
         loginPage.typeIntoPasswordField("j2ee");
         loginPage.clickOnLoginButton();
 
-        WebElement bannerAfterLoginLogo = driver.findElement(By.cssSelector("#Banner img[src*='dog']"));
-        assertTrue(bannerAfterLoginLogo.isDisplayed());
+        FooterPage footerPage = new FooterPage(driver);
+        assertTrue(footerPage.isBannerAfterLoginDisplayed());
     }
 
     @AfterMethod
