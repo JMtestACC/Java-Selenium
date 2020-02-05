@@ -1,12 +1,16 @@
 package page.objects;
 
 import driver.manager.DriverManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import waits.WaitForElement;
 
 public class AngelFishPage {
+
+    private Logger logger = LogManager.getRootLogger();
 
     @FindBy(xpath = "(//a[.='Add to Cart'])[2]")
     private WebElement smallAngelFishAddToCartButton;
@@ -18,5 +22,6 @@ public class AngelFishPage {
     public void addToCartSmallAngelFish() {
         WaitForElement.waitUntilElementIsClickable(smallAngelFishAddToCartButton);
         smallAngelFishAddToCartButton.click();
+        logger.info("Small Angel Fish was added to cart");
     }
 }
