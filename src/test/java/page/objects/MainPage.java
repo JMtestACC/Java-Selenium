@@ -19,10 +19,11 @@ public class MainPage {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
-    public void openFishPageByUsingSideList() {
+    public FishPage openFishPageByUsingSideList() {
         WaitForElement.waitUntilElementIsClickable(fishLinkFromSideList);
         fishLinkFromSideList.click();
         logger.info("Fish Page was selected from side list and opened.");
+        return new FishPage();
     }
 
 

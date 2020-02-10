@@ -19,9 +19,10 @@ public class AngelFishPage {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
-    public void addToCartSmallAngelFish() {
+    public ShoppingCartPage addToCartSmallAngelFish() {
         WaitForElement.waitUntilElementIsClickable(smallAngelFishAddToCartButton);
         smallAngelFishAddToCartButton.click();
         logger.info("Small Angel Fish was added to cart");
+        return new ShoppingCartPage();
     }
 }

@@ -12,16 +12,11 @@ public class ShoppingCartTest extends TestBase{
         landingPage.clickOnEnterStoreLink();
 
         MainPage mainPage = new MainPage();
-        mainPage.openFishPageByUsingSideList();
-
-        FishPage fishPage = new FishPage();
-        fishPage.clickOnAngelFishProductId();
-
-        AngelFishPage angelFishPage = new AngelFishPage();
-        angelFishPage.addToCartSmallAngelFish();
-
-        ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
-        shoppingCartPage.clickOnProceedToCheckoutButton();
+        mainPage
+                .openFishPageByUsingSideList()
+                .clickOnAngelFishProductId()
+                .addToCartSmallAngelFish()
+                .clickOnProceedToCheckoutButton();
 
         LoginPage loginPage = new LoginPage();
         assertTrue(loginPage.getWarningMessage().contains("You must sign on before attempting to check out"));
