@@ -1,6 +1,7 @@
 package page.objects;
 
 import driver.manager.DriverManager;
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
@@ -10,7 +11,7 @@ import waits.WaitForElement;
 
 public class LandingPage {
 
-    private Logger logger = LogManager.getRootLogger();
+    private Logger logger = LogManager.getLogger(LandingPage.class);
 
     @FindBy(xpath = "//a[.='Enter the Store']")
     private WebElement enterStoreLink;
@@ -19,6 +20,7 @@ public class LandingPage {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
+    @Step("Click on Enter Store link")
     public TopMenuPage clickOnEnterStoreLink(){
         WaitForElement.waitUntilElementIsClickable(enterStoreLink);
         enterStoreLink.click();

@@ -1,6 +1,7 @@
 package page.objects;
 
 import driver.manager.DriverManager;
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebElement;
@@ -10,7 +11,7 @@ import waits.WaitForElement;
 
 public class AngelFishPage {
 
-    private Logger logger = LogManager.getRootLogger();
+    private Logger logger = LogManager.getLogger(AngelFishPage.class);
 
     @FindBy(xpath = "(//a[.='Add to Cart'])[2]")
     private WebElement smallAngelFishAddToCartButton;
@@ -19,6 +20,7 @@ public class AngelFishPage {
         PageFactory.initElements(DriverManager.getWebDriver(), this);
     }
 
+    @Step("Add 'Small Angel Fish' to shop cart")
     public ShoppingCartPage addToCartSmallAngelFish() {
         WaitForElement.waitUntilElementIsClickable(smallAngelFishAddToCartButton);
         smallAngelFishAddToCartButton.click();
