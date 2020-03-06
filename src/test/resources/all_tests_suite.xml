@@ -8,15 +8,16 @@
             <class name="tests.FailedLoginTests"/>
         </classes>
     </test>
-
+<!-- NIE DZIALA ZMIANA PRZEGLADARKI LUB JEJ BRAK NA RAZIE -> ZROBIC REFAKTOR DLA REMOTE'A PO ODPALENIU JENKINSA -->
     <test name="Positive Login Tests">
+        <parameter name="browser" value="CHROME"></parameter>
         <classes>
             <class name="tests.PassedLoginTests"/>
         </classes>
     </test>
 
     <test name="Shopping Cart Tests">
-        <parameter name="browser" value="FIREFOX"></parameter>
+        <parameter name="browser" value="CHROME"></parameter>
         <classes>
             <class name="tests.ShoppingCartTest"/>
         </classes>

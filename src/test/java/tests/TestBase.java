@@ -23,6 +23,7 @@ public class TestBase {
     @Parameters("browser")
     @BeforeMethod
     public void beforeTest(@Optional BrowserType browserType) {
+        DriverManager.setWebDriver(browserType);
         DriverManager.getWebDriver();
         DriverUtils.setInitialConfiguration();
         DriverUtils.navigateToPage(APPLICATION_URL);
