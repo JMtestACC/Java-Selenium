@@ -20,12 +20,11 @@ public class PassedLoginTests extends TestBase {
         DriverUtils.navigateToPage(LOGIN_URL);
 
         LoginPage loginPage = new LoginPage();
-        boolean isBannerAfterLoginDisplayed = loginPage
+        loginPage
                 .typeIntoUserNameField("j2ee")
                 .typeIntoPasswordField("j2ee")
                 .clickOnLoginButton()
-                .isBannerAfterLoginDisplayed();
-        assertTrue(isBannerAfterLoginDisplayed);
+                .assertThatDogBannerAfterLoginDisplayed();
     }
 }
 
